@@ -8,6 +8,8 @@
       <tr>
         <th>Name</th>
         <th>Price</th>
+        <th>Ingredient</th>
+        <th>Quantity</th>
       </tr>
     </thead>
     <tbody>
@@ -19,11 +21,22 @@
               <td>
                 {{menu.price}} Ft
               </td>
-              <td><a href="{% url "delete_menu" menu.id %}" style="text-decoration: none; color: inherit;">❌</a></td>
+              <td>
+                {% for recipe in menu.reciperequirement_set.all %}
+                  <li style='list-style-type: none; padding-top:5px'><a href="{% url "update_recipe" recipe.id %}">{{ recipe.ingredient }}</a><a href="{% url "delete_recipe" recipe.id %}" style="text-decoration: none; color: inherit; font-size:12px"> ❌</a></li>
+                {% endfor %}
+              </td>
+              <td>
+                {% for recipe in menu.reciperequirement_set.all %}
+                  <li style='list-style-type: none; padding-top:5px'>{{ recipe.quantity }} kg</li>
+                {% endfor %}
+              </td>
+              <td><a href="{% url "delete_menu" menu.id %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: salmon;">Menu ❌</a></td>
             </tr>
         {% endfor %}
         </tbody>
       </table>
-      <a href="{% url "create_menu" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">➕</a>
+      <a href="{% url "create_menu" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">Menu ➕</a>
+      <a href="{% url "create_recipe" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">Recipe ➕</a>
     </div>
     {% endblock %}
