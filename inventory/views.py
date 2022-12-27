@@ -63,11 +63,6 @@ class DeleteMenuView(DeleteView):
     name = "delete_menu"
 
 
-class RecipeRequirementView(LoginRequiredMixin, ListView):
-    model = RecipeRequirement
-    template_name = "inventory/recipe.html"
-
-
 class CreateRecipeView(CreateView):
     model = RecipeRequirement
     form_class = RecipeForm
@@ -82,7 +77,7 @@ class UpdateRecipeView(UpdateView):
 
 class DeleteRecipeView(DeleteView):
     model =RecipeRequirement
-    success_url = "/recipe"
+    success_url = "/menu"
     template_name = "inventory/delete_recipe.html"
     name = "delete_recipe"
 

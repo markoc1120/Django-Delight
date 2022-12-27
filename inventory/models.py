@@ -10,6 +10,9 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return '/ingredients/'
     
 
 class MenuItem(models.Model):
@@ -18,6 +21,9 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return '/menu/'
 
 
 class RecipeRequirement(models.Model):
@@ -28,6 +34,9 @@ class RecipeRequirement(models.Model):
     def __str__(self):
         return self.menu_name.name + '-' + self.ingredient.name
 
+    def get_absolute_url(self):
+        return '/menu/'
+
 
 class Purchase(models.Model):
     menu_name = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
@@ -35,3 +44,6 @@ class Purchase(models.Model):
 
     def __str__(self):
         return self.menu_name.name + '-' + self.time.strftime("%m/%d/%Y, %H:%M:%S")
+
+    def get_absolute_url(self):
+        return '/purchase/'
