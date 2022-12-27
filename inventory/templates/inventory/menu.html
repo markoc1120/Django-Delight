@@ -10,6 +10,7 @@
         <th>Price</th>
         <th>Ingredient</th>
         <th>Quantity</th>
+        <th>Unit</th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +29,7 @@
               </td>
               <td>
                 {% for recipe in menu.reciperequirement_set.all %}
-                  <li style='list-style-type: none; padding-top:5px'>{{ recipe.quantity }} kg</li>
+                  <li style='list-style-type: none; padding-top:5px'>{{ recipe.quantity }}</li>
                 {% endfor %}
               </td>
               <td><a href="{% url "delete_menu" menu.id %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: salmon;">Menu ❌</a></td>

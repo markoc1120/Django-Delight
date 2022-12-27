@@ -1,0 +1,30 @@
+{% extends 'inventory/base.html' %}
+{% load static %}
+{% block content %}
+<div>
+  <h2>Purchases</h2>
+  <table class="line-table">
+    <thead>
+      <tr>
+        <th>Menu Name</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for purchase in object_list %}
+            <tr>
+              <td>
+                <a href="{% url "update_purchase" purchase.id %}">{{ purchase.menu_name }}</a>
+              </td>
+              <td>
+                {{purchase.time}}
+              </td>
+              <td><a href="{% url "delete_purchase" purchase.id %}" style="text-decoration: none; color: inherit;">❌</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <a href="{% url "create_purchase" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">Purchase ➕</a>
+      <a href="{% url 'finance' %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightblue;">Finance</a>
+    </div>
+    {% endblock %}
