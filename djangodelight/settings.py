@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "inventory.urls"
+ROOT_URLCONF = "djangodelight.urls"
 
 TEMPLATES = [
     {

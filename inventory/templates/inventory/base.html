@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 
 <head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'inventory/style.css' %}">
   {% block head %}
   {% endblock %}
 </head>
 
 <body>
-  <a href="{% url 'home' %}"><h2>Take me home</h2></a>
+  <header>
+    <nav class="navbar">
+      <a class="nav-item" href="{% url 'home' %}">Home</a>
+      <a class="nav-item" href="{% url 'ingredients' %}">Ingredients</a>
+      {% comment %}
+      <a class="nav-item" href="{% url 'menu' %}">Menu</a>
+      <a class="nav-item" href="{% url 'purchases' %}">Purchases</a>
+      {% endcomment %}
+
+    </nav>
+  </header>
   {% block content %}
   {% endblock %}
 </body>
