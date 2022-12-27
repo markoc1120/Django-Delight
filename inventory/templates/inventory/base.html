@@ -2,9 +2,14 @@
 
 <head>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'inventory/style.css' %}">
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'inventory/style.css' %}"/>
+
   {% block head %}
   {% endblock %}
+
 </head>
 
 <body>
@@ -14,6 +19,9 @@
       <a class="nav-item" href="{% url 'ingredients' %}">Ingredients</a>
       <a class="nav-item" href="{% url 'menu' %}">Menu</a>
       <a class="nav-item" href="{% url 'purchase' %}">Purchases</a>
+      {% if user.username %} 
+      <a class='nav-item' href='{% url "logout" %}' >Log Out</a>
+  {% endif %}
     </nav>
   </header>
   {% block content %}

@@ -1,17 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import IngredientForm, MenuForm, RecipeForm, PurchaseForm
-from django.http.response import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 
 # Create your views here.
-class HomeView(TemplateView):
+class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'inventory/home.html'
+    name = 'home'
 
 
-class IngredientView(ListView):
+class IngredientView(LoginRequiredMixin, ListView):
     model = Ingredient
     template_name = "inventory/ingredients.html"
 
@@ -35,7 +39,7 @@ class DeleteIngredientView(DeleteView):
     name = "delete_ingredients"
 
 
-class MenuView(ListView):
+class MenuView(LoginRequiredMixin, ListView):
     model = MenuItem
     template_name = "inventory/menu.html"
 
@@ -59,7 +63,7 @@ class DeleteMenuView(DeleteView):
     name = "delete_menu"
 
 
-class RecipeRequirementView(ListView):
+class RecipeRequirementView(LoginRequiredMixin, ListView):
     model = RecipeRequirement
     template_name = "inventory/recipe.html"
 
@@ -83,7 +87,7 @@ class DeleteRecipeView(DeleteView):
     name = "delete_recipe"
 
 
-class PurchaseView(ListView):
+class PurchaseView(LoginRequiredMixin, ListView):
     model = Purchase
     template_name = "inventory/purchase.html"
 
@@ -96,7 +100,7 @@ def calc_purchase(request):
     for purchase in purchases:
         menu_item = purchase.menu_name
         revenue += float(menu_item.price)
-        for requirement in menu_item.requirements.all():
+        for requirement in menu_item.reciperequirement_set.all():
             expenses += requirement.quantity * float(requirement.ingredient.unit_price)
         profit = float(revenue) - expenses
 
@@ -125,3 +129,14 @@ class DeletePurchaseView(DeleteView):
     success_url = "/purchase"
     template_name = "inventory/delete_purchase.html"
     name = "delete_purchase"
+
+
+class SignUp(CreateView):
+  form_class = UserCreationForm
+  success_url = reverse_lazy("login")
+  template_name = "registration/signup.html"
+
+
+def logout_request(request):
+  logout(request)
+  return redirect('home')

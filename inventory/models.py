@@ -21,7 +21,7 @@ class MenuItem(models.Model):
 
 
 class RecipeRequirement(models.Model):
-    menu_name = models.ForeignKey(MenuItem, on_delete=models.CASCADE, related_name="requirements")
+    menu_name = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.FloatField()
 
