@@ -5,14 +5,14 @@
 
 
 <div class="login-form">
-<h2>Please login</h2>
+<h2 class='title' >Please login</h2>
   <form class="login" method="post">
-      <div>
+      <div class="form">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Login"/>
       </div>
   </form>
+  <a href="{% url 'signup' %}"><input type="submit" value='Sign Up'/></a>
 </div>
-<a href="{% url 'signup' %}"><input type="submit" value='Sign Up'/></a>
 {% endblock %}

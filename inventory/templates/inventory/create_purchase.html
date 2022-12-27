@@ -1,11 +1,13 @@
 {% extends 'inventory/base.html' %} 
 {% load static %} 
 {% block content %}
-<h2>Add a purchase:</h2>
+<h2 class='title' >Add a purchase:</h2>
+<div class="block">
 <form method="post">
   <div>
     {{ form.as_p }}
     <input type="submit" value="Submit" />
   </div>
 </form>
+</div>
 {% endblock %}

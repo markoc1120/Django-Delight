@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 <div>
-  <h2>Purchases</h2>
+  <h2 class='title'>Purchases</h2>
   <table class="line-table">
     <thead>
       <tr>
         <th>Menu Name</th>
         <th>Time</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
         {% endfor %}
         </tbody>
       </table>
+      <br>
       <a href="{% url "create_purchase" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">Purchase ➕</a>
       <a href="{% url 'finance' %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightblue;">Finance</a>
     </div>

@@ -1,0 +1,70 @@
+   body {
+       background-color: #c0edff;
+       margin: 40px 20px 10px;
+   }
+
+   * {
+       font-family: 'Courier New', Courier, monospace;
+   }
+
+   header {
+       padding: 0 20%;
+   }
+
+   .navbar {
+       display: flex;
+       justify-content: space-around;
+   }
+
+   .navbar a {
+       text-decoration: none;
+       border-radius: 15px;
+       background-color: rgb(255, 202, 202);
+       border: none;
+       color: black;
+       padding: 16px 32px;
+       text-align: center;
+       font-size: 16px;
+       margin: 4px 2px;
+   }
+
+
+   .title {
+       text-align: center;
+   }
+
+   table,
+   th,
+   td {
+       border: 1px solid black;
+       text-align: center;
+   }
+
+   table {
+       border-collapse: collapse;
+       width: 100%;
+   }
+
+   tr:nth-child(even) {
+       background-color: #eee;
+   }
+
+   tr:nth-child(odd) {
+       background-color: #fff;
+   }
+
+   .login-form a {
+       display: flex;
+       text-decoration: none;
+       margin-top: 16px;
+       justify-content: center;
+   }
+
+   .form {
+       text-align: center;
+   }
+
+   .block {
+       display: flex;
+       justify-content: center;
+   }

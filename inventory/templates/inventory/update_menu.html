@@ -1,9 +1,11 @@
 {% extends 'inventory/base.html' %} 
 {% load static %} 
 {% block content %}
-<h2>Update menu item</h2>
+<h2 class='title' >Update menu item</h2>
+<div class="block">
 <form method="post">
   {{ form }}
   <input type="submit" value="Update" />
 </form>
+</div>
 {% endblock %}

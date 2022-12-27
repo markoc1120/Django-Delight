@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div>
-  <h2>Menu Items</h2>
+  <h2 class='title'>Menu Items</h2>
   <table class="line-table">
     <thead>
       <tr>
@@ -37,6 +37,7 @@
         {% endfor %}
         </tbody>
       </table>
+      <br>
       <a href="{% url "create_menu" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">Menu ➕</a>
       <a href="{% url "create_recipe" %}" style="border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">Recipe ➕</a>
     </div>
